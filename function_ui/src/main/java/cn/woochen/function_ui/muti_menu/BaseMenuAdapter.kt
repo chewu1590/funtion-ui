@@ -1,4 +1,4 @@
-package cn.woochen.function_ui
+package cn.woochen.function_ui.muti_menu
 
 import android.view.View
 import android.view.ViewGroup
@@ -21,4 +21,10 @@ abstract class BaseMenuAdapter {
     abstract fun menuOpen(tabView: View)
 
     abstract fun menuClose(tabView: View?)
+
+
+    abstract fun registerObserver(observer: BaseMenuObserver)
+
+    abstract fun unRegisterObserver(observer: BaseMenuObserver)
+
 }

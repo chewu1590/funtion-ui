@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".samples.MutiMumeChooseActivity">
+    tools:context=".samples.menu_choice.MutiMumeChooseActivity">
 
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <cn.woochen.function_ui.MutiChoseMenuView
+    <cn.woochen.function_ui.muti_menu.MutiChoseMenuView
         android:id="@+id/mcv"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"

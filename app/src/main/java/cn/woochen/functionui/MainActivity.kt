@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import cn.woochen.functionui.adapter.MainAdapter
-import cn.woochen.functionui.samples.MutiMumeChooseActivity
+import cn.woochen.functionui.samples.load.LoadingActivity
+import cn.woochen.functionui.samples.menu_choice.MutiMumeChooseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private val mItemNames = mutableListOf("下拉选择菜单")
+    private val mItemNames = mutableListOf("下拉选择菜单", "加载动画")
     private val mMainAdapter by lazy {
         MainAdapter(this, mItemNames)
     }
@@ -38,7 +39,9 @@ class MainActivity : AppCompatActivity() {
             0 -> {
                 start(MutiMumeChooseActivity::class.java)
             }
-
+            1 -> {
+                start(LoadingActivity::class.java)
+            }
         }
     }
 

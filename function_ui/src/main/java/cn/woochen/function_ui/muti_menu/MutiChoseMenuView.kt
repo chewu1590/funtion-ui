@@ -1,4 +1,4 @@
-package cn.woochen.function_ui
+package cn.woochen.function_ui.muti_menu
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -12,7 +12,6 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import android.widget.Toast
 import java.lang.IllegalArgumentException
 
 /**
@@ -60,6 +59,7 @@ class MutiChoseMenuView : LinearLayout {
         //2.完成菜单切换功能
         //3.添加动画
         //4.测试调优
+        //5.补充功能：使用观察者模式，让adapter调用当前类的方法，如关闭菜单
         orientation = LinearLayout.VERTICAL
         mMenuCotainerView = LinearLayout(context)
         mMenuCotainerView.layoutParams =
@@ -79,18 +79,27 @@ class MutiChoseMenuView : LinearLayout {
         mContentContainerView.layoutParams =
             LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
         mBottomContainerView.addView(mContentContainerView)
-        mContentContainerView.setOnClickListener {
-//            Toast.makeText(context,"内容",Toast.LENGTH_SHORT).show()
-        }
     }
 
 
     private var mCurrentPosition: Int = -1
 
+    private var mMenuObserver: MenuObserver? = null
+
+    inner class MenuObserver : BaseMenuObserver {
+        override fun toCloseMenu() {
+            closeMenu()
+        }
+    }
+
     /**
      * 布局填充
      */
     private fun initMenuView() {
+        //注册观察者
+        if (mMenuObserver!= null)menuAdapter?.unRegisterObserver(mMenuObserver!!)
+        mMenuObserver = MenuObserver()
+        menuAdapter?.registerObserver(mMenuObserver!!)
         val count = menuAdapter?.getCount()
         for (index in 0 until count!!) {
             //menu
@@ -160,14 +169,13 @@ class MutiChoseMenuView : LinearLayout {
     }
 
 
-
     /**
      * 打开菜单
      */
     @SuppressLint("ObjectAnimatorBinding")
     private fun openMenu(position: Int) {
         if (isAnimating) return
-        if (mContentContainerView.visibility == View.GONE)mContentContainerView.visibility = View.VISIBLE
+        if (mContentContainerView.visibility == View.GONE) mContentContainerView.visibility = View.VISIBLE
         mContentContainerView.getChildAt(position).visibility = View.VISIBLE
         mShadowView.visibility = View.VISIBLE
         //动画

@@ -1,10 +1,10 @@
-package cn.woochen.functionui.samples
+package cn.woochen.functionui.samples.menu_choice
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import cn.woochen.functionui.R
-import cn.woochen.functionui.samples.adapter.ChoiceMenuAdapter
+import cn.woochen.functionui.samples.menu_choice.adapter.ChoiceMenuAdapter
 import kotlinx.android.synthetic.main.activity_muti_mume_choose.*
 
 /**
