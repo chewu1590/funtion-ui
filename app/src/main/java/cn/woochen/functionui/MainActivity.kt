@@ -8,10 +8,12 @@ import android.support.v7.widget.RecyclerView
 import cn.woochen.functionui.adapter.MainAdapter
 import cn.woochen.functionui.samples.load.LoadingActivity
 import cn.woochen.functionui.samples.menu_choice.MutiMumeChooseActivity
+import cn.woochen.functionui.samples.nfc.NFCActivity
+import cn.woochen.functionui.samples.sqlite.LitePalActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private val mItemNames = mutableListOf("下拉选择菜单", "加载动画")
+    private val mItemNames = mutableListOf("下拉选择菜单", "加载动画","数据库crud","NFC")
     private val mMainAdapter by lazy {
         MainAdapter(this, mItemNames)
     }
@@ -42,6 +44,13 @@ class MainActivity : AppCompatActivity() {
             1 -> {
                 start(LoadingActivity::class.java)
             }
+            2 ->{
+                start(LitePalActivity::class.java)
+            }
+            3 ->{
+                start(NFCActivity::class.java)
+            }
+
         }
     }
 
