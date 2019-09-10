@@ -6,6 +6,7 @@
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="true" />
+
     <uses-permission android:name="android.permission.NFC" />
 
     <application
@@ -17,18 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".samples.ViewDragActivity"/>
         <activity android:name=".samples.nfc.NFCActivity">
             <intent-filter>
-
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:mimeType="*/*" />
-
             </intent-filter>
-
-
         </activity>
         <activity android:name=".samples.sqlite.LitePalActivity" />
         <activity android:name=".samples.load.LoadingActivity" />
