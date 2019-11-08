@@ -2,7 +2,10 @@ package cn.woochen.functionui.samples
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import cn.woochen.function_ui.MessageBubbleView
+import android.view.View
+import android.widget.Toast
+import cn.woochen.function_ui.bubble_view.DragBubbleViewListener
+import cn.woochen.function_ui.bubble_view.MessageBubbleView
 import cn.woochen.functionui.R
 import kotlinx.android.synthetic.main.activity_view_drag.*
 
@@ -21,6 +24,10 @@ class ViewDragActivity : AppCompatActivity() {
 
     private fun initView() {
         val messageBubbleView = MessageBubbleView(this)
-        messageBubbleView.attachView(btn_hello)
+        messageBubbleView.attachView(btn_hello,object : DragBubbleViewListener.BubbleDisappearListener {
+            override fun dismiss(view: View?) {
+                Toast.makeText(this@ViewDragActivity,"气泡消失",Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
