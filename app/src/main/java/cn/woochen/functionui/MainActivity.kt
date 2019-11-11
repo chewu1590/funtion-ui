@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import cn.woochen.functionui.adapter.MainAdapter
+import cn.woochen.functionui.samples.LoveViewActivity
 import cn.woochen.functionui.samples.ViewDragActivity
 import cn.woochen.functionui.samples.load.LoadingActivity
 import cn.woochen.functionui.samples.menu_choice.MutiMumeChooseActivity
@@ -14,7 +15,7 @@ import cn.woochen.functionui.samples.sqlite.LitePalActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private val mItemNames = mutableListOf("下拉选择菜单", "加载动画","数据库crud","NFC","View拖拽")
+    private val mItemNames = mutableListOf("下拉选择菜单", "加载动画","数据库crud","NFC","View拖拽","点赞动画")
     private val mMainAdapter by lazy {
         MainAdapter(this, mItemNames)
     }
@@ -53,6 +54,9 @@ class MainActivity : AppCompatActivity() {
             }
             4 ->{
                 start(ViewDragActivity::class.java)
+            }
+            5 ->{
+                start(LoveViewActivity::class.java)
             }
 
         }
